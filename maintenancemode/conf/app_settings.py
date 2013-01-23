@@ -7,6 +7,7 @@ from maintenancemode.utils.settings import AppSettings
 
 class MaintenanceModeSettings(AppSettings):
     CACHE_BACKEND = None
+    URLNAMES_EXCLUDED = []
 
     def configure_cache_backend(self, value):
         # If we are on Django >= 1.3 AND using the new CACHES setting...
