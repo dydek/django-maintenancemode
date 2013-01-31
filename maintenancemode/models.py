@@ -1,8 +1,6 @@
-from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.db import models
-from django.db.models.signals import post_save, pre_save, pre_delete
-from django.template.defaultfilters import join
+from django.conf import settings
 
 
 class Maintenance(models.Model):
@@ -29,7 +27,7 @@ class MaintenanceLog(models.Model):
     date_stop = models.DateTimeField(null=True, blank=True) #
     reason = models.TextField() # You have to fill this field before You switch service to maintenance
     summary = models.TextField(null=True, blank=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     class Meta:
         ordering = ['date_start']
